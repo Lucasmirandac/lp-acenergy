@@ -50,7 +50,7 @@
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#00bcd4" />
+    <meta name="theme-color" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="ACENERGY" />
@@ -109,9 +109,7 @@
       <div class="container">
         <div class="logo">
           <h1>
-            <a href="#hero" aria-label="ACENERGY - Página inicial">
-              ACENERGY
-            </a>
+            <a aria-label="ACENERGY - Página inicial"> ACENERGY </a>
           </h1>
           <p>mais limpeza, mais energia, mais economia</p>
         </div>
@@ -384,40 +382,125 @@
         aria-labelledby="contact-title"
       >
         <div class="container">
-          <h3 id="contact-title">Contato</h3>
-          <address>
-            <p>
-              <strong>Email:</strong>
+          <h3 id="contact-title">Entre em Contato</h3>
+          <p class="contact-intro">
+            Estamos prontos para atender você e sua empresa. Entre em contato
+            conosco através dos canais abaixo:
+          </p>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                  />
+                </svg>
+              </div>
+              <h4>Email</h4>
+              <p>Envie sua mensagem diretamente para nossa equipe</p>
               <a
                 href="mailto:contato@oacenergy.com.br"
+                class="contact-link"
                 aria-label="Enviar email para contato@oacenergy.com.br"
-                >contato@oacenergy.com.br</a
               >
-            </p>
-            <p>
-              <strong>WhatsApp:</strong>
+                <svg viewBox="0 0 24 24">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+                contato@oacenergy.com.br
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                  />
+                </svg>
+              </div>
+              <h4>WhatsApp</h4>
+              <p>Conversa direta e rápida via WhatsApp</p>
               <a
                 href="https://wa.me/5531991281280"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="contact-link"
                 aria-label="Contato via WhatsApp"
               >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M19.05 4.91C17.18 3.03 14.69 2 12 2C6.48 2 2 6.48 2 12c0 1.77.48 3.49 1.39 5.01L2 22l5.25-1.39C6.51 21.52 8.23 22 10 22c5.52 0 10-4.48 10-10 0-2.69-1.03-5.18-2.95-7.09zM12 20c-1.49 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31C7.4 14.94 7 13.49 7 12c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5z"
+                  />
+                </svg>
                 (31) 99128-1280
               </a>
-            </p>
-            <p>
-              <strong>Instagram:</strong>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </div>
+              <h4>Instagram</h4>
+              <p>Acompanhe nossos projetos e novidades</p>
               <a
                 href="https://www.instagram.com/acenergy_/"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="contact-link"
                 aria-label="Siga-nos no Instagram"
               >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
                 @acenergy_
               </a>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+              </div>
+              <h4>Localização</h4>
+              <p>Sede em Belo Horizonte com atuação nacional</p>
+              <p class="location-info">
+                <strong>Belo Horizonte - MG</strong><br />
+                Atuação Nacional
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-cta">
+            <h4>Pronto para começar?</h4>
+            <p>
+              Solicite um orçamento personalizado para sua usina solar. Nossa
+              equipe está pronta para atender você!
             </p>
-            <p><strong>Sede:</strong> Belo Horizonte - MG | Atuação Nacional</p>
-          </address>
+            <a
+              href="https://wa.me/5531991281280?text=Olá! Gostaria de solicitar um orçamento para minha usina solar."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-button"
+              aria-label="Solicitar orçamento via WhatsApp"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+              Solicitar Orçamento
+            </a>
+          </div>
         </div>
       </section>
     </main>
