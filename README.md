@@ -110,8 +110,27 @@ lp-acenergy/
 ├── manifest.json       # PWA manifest
 ├── sitemap.xml        # SEO sitemap
 ├── robots.txt         # SEO robots
+├── .htaccess          # Apache configuration
 └── README.md          # Documentação
 ```
+
+## 🌐 Estrutura de URLs
+
+### **URLs Principais**
+
+- `/` - Página principal (index.html)
+- `/#about` - Seção Nossa Empresa
+- `/#services` - Seção Serviços
+- `/#technology` - Seção Tecnologia
+- `/#contact` - Seção Contato
+
+### **Arquivos de Recursos**
+
+- `/style.css` - Estilos CSS
+- `/script.js` - JavaScript
+- `/manifest.json` - PWA manifest
+- `/sitemap.xml` - Sitemap para SEO
+- `/robots.txt` - Instruções para crawlers
 
 ## 🚀 Como Usar
 
@@ -127,11 +146,11 @@ npx serve .
 
 ### **Deploy**
 
-1. Faça upload dos arquivos para seu servidor
+1. Faça upload dos arquivos para a raiz do seu servidor (`/`)
 2. Configure o domínio (ex: acenergy.com.br)
 3. Adicione SSL/HTTPS
 4. Configure o Google Search Console
-5. Submeta o sitemap
+5. Submeta o sitemap em `/sitemap.xml`
 
 ## 📊 Métricas de Performance
 

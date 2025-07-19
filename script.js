@@ -48,40 +48,60 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeParallaxEffect();
     initializeServiceCards();
     initializeCTAEnhancements();
+    initializeSectionDividers();
   } catch (error) {
     console.error("Error initializing features:", error);
   }
 });
 
 /**
- * Scroll Animations with Intersection Observer
+ * Enhanced Scroll Animations with Intersection Observer
  */
 function initializeScrollAnimations() {
   const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
+    threshold: 0.15,
+    rootMargin: "0px 0px -100px 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("fade-in");
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        // Add animation class
+        entry.target.classList.add("animate-in");
+
+        // Animate section children with staggered delays
+        if (entry.target.classList.contains("section-padding")) {
+          const children = entry.target.children;
+          Array.from(children).forEach((child, index) => {
+            setTimeout(() => {
+              child.classList.add("animate-in");
+            }, index * 100);
+          });
+        }
+
+        // Animate background effects
+        if (entry.target.classList.contains("bg-light")) {
+          entry.target.classList.add("animate-in");
+        }
       }
     });
   }, observerOptions);
 
-  const elementsToAnimate = safeQuerySelectorAll(
-    ".section-padding, .service-item, .tech-item, .audience-section ul li, .commitment-section ul li"
+  // Observe sections and cards
+  const sectionsToAnimate = safeQuerySelectorAll(".section-padding");
+  const cardsToAnimate = safeQuerySelectorAll(
+    ".service-item, .tech-item, .audience-section ul li, .commitment-section ul li"
   );
 
-  elementsToAnimate.forEach((el) => {
-    if (el) {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(30px)";
-      el.style.transition = "all 0.6s ease-out";
-      observer.observe(el);
+  sectionsToAnimate.forEach((section) => {
+    if (section) {
+      observer.observe(section);
+    }
+  });
+
+  cardsToAnimate.forEach((card) => {
+    if (card) {
+      observer.observe(card);
     }
   });
 }
@@ -131,7 +151,7 @@ function initializeNavbarEffects() {
 }
 
 /**
- * Smooth Scrolling with Accessibility Support
+ * Enhanced Smooth Scrolling with Section Transitions
  */
 function initializeSmoothScrolling() {
   const navLinks = safeQuerySelectorAll('nav a[href^="#"]');
@@ -146,6 +166,12 @@ function initializeSmoothScrolling() {
       if (targetSection) {
         const offsetTop = targetSection.offsetTop - 80;
 
+        // Add visual feedback to clicked link
+        this.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          this.style.transform = "scale(1)";
+        }, 150);
+
         // Announce to screen readers
         const announcement = document.createElement("div");
         announcement.setAttribute("aria-live", "polite");
@@ -159,14 +185,32 @@ function initializeSmoothScrolling() {
         announcement.style.left = "-10000px";
         document.body.appendChild(announcement);
 
+        // Smooth scroll with enhanced behavior
         window.scrollTo({
           top: offsetTop,
           behavior: "smooth",
         });
 
+        // Trigger section animation when scrolled to
+        setTimeout(() => {
+          if (targetSection.classList.contains("section-padding")) {
+            targetSection.classList.add("animate-in");
+
+            // Animate section children
+            const children = targetSection.children;
+            Array.from(children).forEach((child, index) => {
+              setTimeout(() => {
+                child.classList.add("animate-in");
+              }, index * 100);
+            });
+          }
+        }, 500);
+
         // Clean up announcement
         setTimeout(() => {
-          document.body.removeChild(announcement);
+          if (announcement.parentNode) {
+            document.body.removeChild(announcement);
+          }
         }, 1000);
       }
     });
@@ -419,6 +463,22 @@ window.addEventListener("error", function (e) {
   // In production, you might want to send this to an error tracking service
 });
 
+/**
+ * Section Divider Management
+ */
+function initializeSectionDividers() {
+  const sections = safeQuerySelectorAll(".section-padding");
+
+  sections.forEach((section, index) => {
+    if (index < sections.length - 1) {
+      const divider = document.createElement("div");
+      divider.className = "section-divider";
+      divider.setAttribute("aria-hidden", "true");
+      section.appendChild(divider);
+    }
+  });
+}
+
 // Initialize performance monitoring
 initializePerformanceMonitoring();
 
@@ -459,6 +519,10 @@ style.textContent = `
     animation: fadeInUp 0.8s ease-out;
   }
 
+  .animate-in {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
   /* Focus indicators for better accessibility */
   .btn:focus-visible,
   .navbar nav.nav-menu ul li a:focus-visible,
@@ -467,14 +531,34 @@ style.textContent = `
     outline-offset: 2px;
   }
 
+  /* Enhanced hover effects for navigation */
+  .navbar nav.nav-menu ul li a:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+  }
+
+  /* Smooth section transitions */
+  .section-padding {
+    scroll-margin-top: 100px;
+  }
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     .ripple {
       animation: none;
     }
     
-    .fade-in {
+    .fade-in,
+    .animate-in {
       animation: none;
+    }
+    
+    .section-padding,
+    .service-item,
+    .tech-item,
+    .audience-section ul li,
+    .commitment-section ul li {
+      transition: none !important;
     }
   }
 `;

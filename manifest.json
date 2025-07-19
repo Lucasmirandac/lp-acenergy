@@ -2,7 +2,7 @@
   "name": "ACENERGY - Soluções em Energia Solar",
   "short_name": "ACENERGY",
   "description": "Especialistas em limpeza e manutenção de usinas fotovoltaicas. Tecnologia própria e soluções sustentáveis para energia solar.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#2c3e50",
   "theme_color": "#00bcd4",
