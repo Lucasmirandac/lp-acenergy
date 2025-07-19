@@ -378,6 +378,25 @@ function initializeMobileMenu() {
       }
     });
 
+    // Auto-close menu after inactivity (optional)
+    if (isOpen) {
+      const autoCloseTimer = setTimeout(() => {
+        if (navMenu.classList.contains("active")) {
+          toggleMenu(false);
+        }
+      }, 30000); // 30 seconds
+
+      // Clear timer if menu is closed manually
+      const clearAutoClose = () => {
+        clearTimeout(autoCloseTimer);
+        document.removeEventListener("click", clearAutoClose);
+        document.removeEventListener("keydown", clearAutoClose);
+      };
+
+      document.addEventListener("click", clearAutoClose);
+      document.addEventListener("keydown", clearAutoClose);
+    }
+
     // Announce to screen readers
     const announcement = document.createElement("div");
     announcement.setAttribute("aria-live", "polite");
@@ -397,7 +416,8 @@ function initializeMobileMenu() {
   };
 
   // Toggle button click
-  mobileToggle.addEventListener("click", function () {
+  mobileToggle.addEventListener("click", function (e) {
+    e.stopPropagation(); // Prevent event bubbling
     const isCurrentlyOpen = navMenu.classList.contains("active");
     toggleMenu(!isCurrentlyOpen);
   });
@@ -410,9 +430,14 @@ function initializeMobileMenu() {
     });
   });
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside or on overlay
   document.addEventListener("click", function (e) {
-    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+    const isMenuOpen = navMenu.classList.contains("active");
+    const clickedOutside =
+      !navMenu.contains(e.target) && !mobileToggle.contains(e.target);
+    const clickedOnOverlay = e.target === navMenu; // Clicked on the menu background
+
+    if (isMenuOpen && (clickedOutside || clickedOnOverlay)) {
       toggleMenu(false);
     }
   });
@@ -424,6 +449,15 @@ function initializeMobileMenu() {
     }
   });
 
+  // Handle Enter key on toggle button
+  mobileToggle.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      const isCurrentlyOpen = navMenu.classList.contains("active");
+      toggleMenu(!isCurrentlyOpen);
+    }
+  });
+
   // Prevent body scroll when menu is open
   const preventScroll = (e) => {
     if (body.classList.contains("menu-open")) {
@@ -432,6 +466,40 @@ function initializeMobileMenu() {
   };
 
   document.addEventListener("touchmove", preventScroll, { passive: false });
+
+  // Close menu on swipe (touch gestures)
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  navMenu.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+
+  navMenu.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    },
+    { passive: true }
+  );
+
+  const handleSwipe = () => {
+    const swipeThreshold = 50;
+    const swipeDistance = touchEndX - touchStartX;
+
+    // Swipe right to close menu
+    if (
+      swipeDistance > swipeThreshold &&
+      navMenu.classList.contains("active")
+    ) {
+      toggleMenu(false);
+    }
+  };
 }
 
 /**
