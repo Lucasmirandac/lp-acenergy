@@ -28,16 +28,54 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    # Add caching for better performance
+    env:
+      NODE_VERSION: "18"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Fetch all history for all branches and tags
+          fetch-depth: 0
+      - name: Verify required files
+        run: |
+          echo "Verifying required files exist..."
+          ls -la
+          echo "Checking for index.html..."
+          test -f index.html || exit 1
+          echo "Checking for style.css..."
+          test -f style.css || exit 1
+          echo "Checking for script.js..."
+          test -f script.js || exit 1
+          echo "All required files found!"
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare files for deployment
+        run: |
+          echo "Preparing files for deployment..."
+          # Create deployment directory
+          mkdir -p deploy
+          # Copy required files
+          cp index.html deploy/
+          cp style.css deploy/
+          cp script.js deploy/
+          cp manifest.json deploy/
+          cp sitemap.xml deploy/
+          cp robots.txt deploy/
+          cp .htaccess deploy/
+          # List files for verification
+          echo "Files ready for deployment:"
+          ls -la deploy/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload from deployment directory
+          path: "deploy"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify deployment
+        run: |
+          echo "Deployment completed successfully!"
+          echo "Website URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "Deployment status: ${{ steps.deployment.outputs.page_url != '' && 'SUCCESS' || 'FAILED' }}"

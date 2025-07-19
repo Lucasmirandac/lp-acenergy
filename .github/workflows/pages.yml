@@ -1,0 +1,92 @@
+# GitHub Pages deployment workflow
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify files
+        run: |
+          echo "🔍 Verifying required files..."
+          required_files=("index.html" "style.css" "script.js" "manifest.json" "sitemap.xml" "robots.txt")
+
+          for file in "${required_files[@]}"; do
+            if [[ -f "$file" ]]; then
+              echo "✅ $file found"
+            else
+              echo "❌ $file missing"
+              exit 1
+            fi
+          done
+          echo "✅ All required files verified!"
+
+      - name: Prepare deployment
+        run: |
+          echo "📦 Preparing deployment package..."
+          mkdir -p deploy
+
+          # Copy essential files
+          cp index.html deploy/
+          cp style.css deploy/
+          cp script.js deploy/
+          cp manifest.json deploy/
+          cp sitemap.xml deploy/
+          cp robots.txt deploy/
+
+          # Copy optional files if they exist
+          [[ -f .htaccess ]] && cp .htaccess deploy/
+          [[ -f favicon.ico ]] && cp favicon.ico deploy/
+
+          echo "📋 Files in deployment package:"
+          ls -la deploy/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "deploy"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment status
+        run: |
+          if [[ "${{ steps.deployment.outputs.page_url }}" != "" ]]; then
+            echo "🎉 Deployment successful!"
+            echo "🌐 Website URL: ${{ steps.deployment.outputs.page_url }}"
+            echo "📅 Deployed at: $(date)"
+          else
+            echo "❌ Deployment failed"
+            exit 1
+          fi
