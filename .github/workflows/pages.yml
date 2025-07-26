@@ -54,12 +54,23 @@ jobs:
           cp sitemap.xml deploy/
           cp robots.txt deploy/
 
+          # Copy assets folder if it exists
+          if [[ -d "assets" ]]; then
+            echo "📁 Copying assets folder..."
+            cp -r assets deploy/
+            echo "✅ Assets folder copied successfully"
+          else
+            echo "⚠️  Assets folder not found"
+          fi
+
           # Copy optional files if they exist
           [[ -f .htaccess ]] && cp .htaccess deploy/
           [[ -f favicon.ico ]] && cp favicon.ico deploy/
 
           echo "📋 Files in deployment package:"
           ls -la deploy/
+          echo "📁 Assets folder contents (if exists):"
+          [[ -d "deploy/assets" ]] && ls -la deploy/assets/ || echo "No assets folder found"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
