@@ -160,7 +160,6 @@ p {
 .navbar {
   background: linear-gradient(135deg, var(--dark-color) 0%, #1a1a1a 100%);
   color: var(--white);
-  padding: 1rem 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -172,6 +171,7 @@ p {
 }
 
 .navbar .container {
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -422,16 +422,6 @@ ul li {
   position: relative;
   font-size: 1.1rem;
   line-height: var(--line-height);
-}
-
-ul li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-  font-weight: bold;
-  font-size: 1.2rem;
-  top: 2px;
 }
 
 /* ==========================================================================
