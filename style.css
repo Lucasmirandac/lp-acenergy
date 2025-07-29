@@ -275,57 +275,100 @@ p {
    ========================================================================== */
 
 .hero-section {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(26, 26, 26, 0.8) 100%
-    ),
-    url("https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")
-      no-repeat center center/cover;
-  color: var(--white);
-  text-align: center;
-  padding: 8rem 1.25rem 6rem;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  margin-top: 80px; /* Account for fixed navbar */
   overflow: hidden;
-}
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
 
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    circle at center,
-    transparent 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  z-index: 1;
-}
+  .container {
+    padding: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100%;
+    position: relative;
 
-.hero-section .container {
-  position: relative;
-  z-index: 2;
-  animation: fadeInUp 1s ease-out;
-}
+    #carousel-content {
+      height: 100%;
+      position: relative;
 
-.hero-section h2 {
-  color: var(--white);
-  animation: slideInLeft 1.2s ease-out 0.3s both;
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+      .carousel-inner {
+        height: 100%;
+      }
 
-.hero-section p {
-  max-width: 800px;
-  margin: 0 auto 2.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  animation: slideInRight 1.2s ease-out 0.6s both;
+      .carousel-item {
+        height: 100%;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          filter: brightness(0.4) contrast(1.1);
+        }
+      }
+
+      .carousel-item.active img {
+        filter: brightness(0.5) contrast(1.2);
+      }
+    }
+
+    .carousel-description {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: var(--white);
+      z-index: 1000;
+      width: 100%;
+      padding: 0 2rem;
+      max-width: 90%;
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        color: var(--white);
+      }
+
+      p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        color: rgba(255, 255, 255, 0.95);
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        padding: clamp(0.875rem, 2vw, 1.25rem) clamp(2rem, 4vw, 3rem);
+        border-radius: var(--border-radius-lg);
+        background: var(--primary-color);
+        color: var(--white);
+        border: 2px solid var(--white);
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        font-weight: 600;
+      }
+
+      .btn:hover {
+        background: var(--white);
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
 }
 
 /* ==========================================================================
@@ -1030,8 +1073,40 @@ footer p {
 
   /* Responsive adjustments */
   .hero-section {
-    padding: 7rem 1.25rem 4rem;
-    min-height: 80vh;
+    height: 80vh;
+    min-height: 500px;
+    margin-top: 100px;
+
+    .container {
+      padding: 0;
+      .carousel-description {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+        padding: 0 1.5rem;
+        max-width: 95%;
+
+        h2 {
+          font-size: clamp(1.8rem, 4vw, 2.5rem);
+          margin-bottom: 1rem;
+          line-height: 1.2;
+        }
+
+        p {
+          font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+          margin-bottom: 1.5rem;
+          max-width: 100%;
+          line-height: 1.5;
+        }
+
+        .btn {
+          font-size: clamp(0.8rem, 2vw, 1rem);
+          padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+        }
+      }
+    }
   }
 
   .section-padding {
@@ -1147,6 +1222,41 @@ footer p {
   .cta-button svg {
     width: 18px;
     height: 18px;
+  }
+
+  .hero-section {
+    height: 70vh;
+    min-height: 400px;
+
+    .container {
+      .carousel-description {
+        padding: 0 1rem;
+        max-width: 100%;
+
+        h2 {
+          font-size: clamp(1.5rem, 5vw, 2rem);
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: clamp(0.8rem, 3vw, 1rem);
+          margin-bottom: 1rem;
+          line-height: 1.4;
+        }
+
+        .btn {
+          font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+          padding: clamp(0.625rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.75rem);
+        }
+      }
+    }
+  }
+
+  /* Touch optimization for mobile */
+  .carousel-control-prev,
+  .carousel-control-next {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -1386,5 +1496,48 @@ html {
 
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Performance and Accessibility Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none !important;
+  }
+
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    transform: translateY(-50%) !important;
+  }
+
+  .carousel-description .btn:hover {
+    transform: translateY(0) !important;
+  }
+}
+
+/* Landscape orientation optimization for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  .carousel-description {
+    top: 45%;
+
+    h2 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .btn {
+      font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+      padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
+    }
   }
 }
