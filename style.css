@@ -270,6 +270,10 @@ p {
   border-radius: 2px;
 }
 
+.nav-menu ul li {
+  margin-bottom: 0px;
+}
+
 /* ==========================================================================
    Hero Section
    ========================================================================== */
@@ -328,7 +332,7 @@ p {
       max-width: 90%;
 
       h2 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-size: clamp(2rem, 3vw, 3.5rem);
         font-weight: 700;
         margin-bottom: 1.5rem;
         line-height: 1.2;
@@ -409,7 +413,7 @@ p {
    ========================================================================== */
 
 .section-padding {
-  padding: 6rem 0;
+  padding: 2rem 0;
 }
 
 .bg-light {
@@ -463,13 +467,15 @@ ul li {
 /* Service Items */
 .service-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .service-item {
   background: var(--white);
-  padding: 2.5rem;
+  padding: 0;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-light);
   text-align: center;
@@ -493,10 +499,34 @@ ul li {
   box-shadow: var(--shadow-medium);
 }
 
+.service-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-image img {
+  transform: scale(1.05);
+}
+
 .service-item h4 {
   color: var(--primary-color);
-  margin-bottom: 1.25rem;
+  margin: 1.5rem 1.5rem 1rem;
   font-weight: 600;
+}
+
+.service-item p {
+  margin: 0 1.5rem 1.5rem;
+  color: var(--text-secondary);
 }
 
 /* Technology Items */
@@ -532,16 +562,18 @@ ul li {
 /* Audience Section */
 .audience-section ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
   list-style: none;
   padding: 0;
   text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .audience-section ul li {
   background: var(--white);
-  padding: 1.5rem;
+  padding: 0;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-light);
   font-weight: 600;
@@ -550,6 +582,34 @@ ul li {
   position: relative;
   overflow: hidden;
   margin: 0;
+  text-align: center;
+}
+
+.audience-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.audience-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.audience-section ul li:hover .audience-image img {
+  transform: scale(1.05);
+}
+
+.audience-section ul li h4 {
+  padding: 1.5rem 1.5rem 1rem;
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 .audience-section ul li:hover {
@@ -618,9 +678,12 @@ ul li {
 
 .contact-info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 3rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-item {
@@ -1110,22 +1173,32 @@ footer p {
   }
 
   .section-padding {
-    padding: 4rem 0;
+    padding: 2rem 0;
   }
 
   .service-list,
   .tech-highlights {
     grid-template-columns: 1fr;
+    max-width: none;
+  }
+
+  .service-image,
+  .tech-image,
+  .audience-image {
+    height: 180px;
   }
 
   .audience-section ul,
   .commitment-section ul {
     grid-template-columns: 1fr;
+    max-width: none;
+    gap: 2.5rem;
   }
 
   .contact-info {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: none;
   }
 
   .contact-item {
@@ -1152,9 +1225,44 @@ footer p {
     font-size: 1rem;
   }
 
-  .container {
-    width: 95%;
-    padding: 0 1rem;
+  .cta-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-section {
+    height: 70vh;
+    min-height: 400px;
+
+    .container {
+      .carousel-description {
+        padding: 0 1rem;
+        max-width: 100%;
+
+        h2 {
+          font-size: clamp(1.5rem, 5vw, 2rem);
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: clamp(0.8rem, 3vw, 1rem);
+          margin-bottom: 1rem;
+          line-height: 1.4;
+        }
+
+        .btn {
+          font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+          padding: clamp(0.625rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.75rem);
+        }
+      }
+    }
+  }
+
+  /* Touch optimization for mobile */
+  .carousel-control-prev,
+  .carousel-control-next {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -1170,7 +1278,13 @@ footer p {
 
   .service-item,
   .tech-item {
-    padding: 2rem 1.5rem;
+    padding: 0;
+  }
+
+  .service-image,
+  .tech-image,
+  .audience-image {
+    height: 150px;
   }
 
   .contact-section {
@@ -1539,5 +1653,237 @@ html {
       font-size: clamp(0.7rem, 1.8vw, 0.8rem);
       padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
     }
+  }
+}
+
+/* ==========================================================================
+   Technology Section
+   ========================================================================== */
+
+.technology-section {
+  background: var(--white);
+  color: var(--text-color);
+}
+
+.technology-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.tech-intro {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tech-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.tech-item {
+  background: var(--white);
+  padding: 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.tech-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tech-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-image img {
+  transform: scale(1.05);
+}
+
+.tech-item h4 {
+  color: var(--primary-color);
+  margin: 1.5rem 1.5rem 1rem;
+  font-size: 1.25rem;
+}
+
+.tech-item p {
+  color: var(--text-secondary);
+  margin: 0 1.5rem 1.5rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   KPI Section
+   ========================================================================== */
+
+.kpi-section {
+  margin-top: 4rem;
+  padding: 3rem 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  border-radius: var(--border-radius-lg);
+  color: var(--white);
+}
+
+.kpi-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.kpi-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  text-align: center;
+  color: var(--white) !important;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.kpi-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.kpi-card:hover::before {
+  left: 100%;
+}
+
+.kpi-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.kpi-icon {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.kpi-number {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.kpi-label {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kpi-description {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  opacity: 0.8;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive adjustments for KPI section */
+@media (max-width: 768px) {
+  .kpi-section {
+    margin-top: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .kpi-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .kpi-card {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .kpi-card {
+    transition: none;
+  }
+
+  .kpi-card::before {
+    display: none;
+  }
+
+  .kpi-card:hover {
+    transform: none;
   }
 }
