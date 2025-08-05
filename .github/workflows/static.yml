@@ -59,6 +59,7 @@ jobs:
           cp index.html deploy/
           cp style.css deploy/
           cp script.js deploy/
+          cp assets deploy/
           cp manifest.json deploy/
           cp sitemap.xml deploy/
           cp robots.txt deploy/
