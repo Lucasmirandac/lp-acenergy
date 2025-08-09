@@ -121,11 +121,10 @@ function initializeNavbarEffects() {
 
     // Add/remove background blur based on scroll
     if (scrollTop > 50) {
-      navbar.style.background = "rgba(44, 62, 80, 0.95)";
+      navbar.style.background = "var(--primary-color)";
       navbar.style.backdropFilter = "blur(15px)";
     } else {
-      navbar.style.background =
-        "linear-gradient(135deg, var(--dark-color) 0%, #34495e 100%)";
+      navbar.style.background = "var(--primary-color)";
       navbar.style.backdropFilter = "blur(10px)";
     }
 
