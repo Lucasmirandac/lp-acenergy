@@ -1678,10 +1678,11 @@ html {
    ========================================================================== */
 
 .technology-section {
-  background: var(--gray-100);
+  background: var(--white);
   color: var(--text-color);
   border-top: 1px solid var(--gray-200);
   border-bottom: 1px solid var(--gray-200);
+  position: relative;
 }
 
 .technology-section h3 {
@@ -1703,7 +1704,7 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin: 3rem 0;
+  margin: 2rem 0 3rem 0;
 }
 
 .tech-item {
@@ -1757,11 +1758,42 @@ html {
    ========================================================================== */
 
 .kpi-section {
-  margin-top: 4rem;
-  padding: 3rem 0;
-  background: var(--primary-color);
+  margin-top: 3rem;
+  padding: 3rem 2rem;
+  background: var(--white);
   border-radius: var(--border-radius-lg);
-  color: var(--white);
+  color: var(--text-color);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-300), transparent);
+}
+
+.kpi-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
 }
 
 .kpi-title {
@@ -1769,23 +1801,23 @@ html {
   font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
-  color: var(--white);
+  color: var(--primary-color);
 }
 
 .kpi-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   text-align: center;
-  color: var(--white) !important;
+  color: var(--text-secondary) !important;
   margin-bottom: 3rem;
-  opacity: 0.9;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1793,15 +1825,15 @@ html {
 }
 
 .kpi-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--white);
+  border: 2px solid var(--gray-200);
   border-radius: var(--border-radius-lg);
   padding: 2rem 1.5rem;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .kpi-card::before {
@@ -1814,7 +1846,7 @@ html {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.03),
     transparent
   );
   transition: left 0.5s ease;
@@ -1826,39 +1858,38 @@ html {
 
 .kpi-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  background: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--primary-color);
 }
 
 .kpi-icon {
   font-size: clamp(2.5rem, 6vw, 4rem);
   margin-bottom: 1rem;
   display: block;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .kpi-number {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 0.5rem;
-  color: var(--white);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--primary-color);
+  text-shadow: none;
 }
 
 .kpi-label {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--white);
+  color: var(--text-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .kpi-description {
   font-size: clamp(0.8rem, 2vw, 0.9rem);
-  opacity: 0.8;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
 }
 
 /* Responsive adjustments for KPI section */
@@ -1866,10 +1897,11 @@ html {
   .kpi-section {
     margin-top: 2rem;
     padding: 2rem 1rem;
+    border-radius: var(--border-radius);
   }
 
   .kpi-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
