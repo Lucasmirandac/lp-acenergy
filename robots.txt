@@ -17,4 +17,3 @@ Disallow: /cache/
 Allow: /style.css
 Allow: /script.js
 Allow: /favicon.ico
-Allow: /apple-touch-icon.png 
