@@ -37,6 +37,7 @@
   --shadow-heavy: 0 8px 30px rgba(0, 0, 0, 0.2);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 10px 40px rgba(0, 0, 0, 0.25);
 
   /* Spacing */
   --border-radius: 12px;
@@ -1933,5 +1934,189 @@ html {
 
   .kpi-card:hover {
     transform: none;
+  }
+}
+
+/* ==========================================================================
+   About Section Styles
+   ========================================================================== */
+
+.about-section {
+  background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.about-text h3 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-image {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-large);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+.about-image:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+/* About Section Pillars Styles */
+.about-pillars {
+  margin-top: 0;
+  padding-top: 2rem;
+  border-top: 2px solid var(--gray-200);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-pillars h4 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.pillars-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-style: italic;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pillars-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pillars-list li {
+  padding: 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.pillars-list strong {
+  color: var(--primary-color);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive design for about section */
+@media (max-width: 768px) {
+  .about-content {
+    margin-bottom: 2rem;
+  }
+
+  .about-text h3 {
+    font-size: 2rem;
+  }
+
+  .about-text p {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .about-image {
+    margin-bottom: 2rem;
+  }
+
+  .about-pillars {
+    margin-top: 0;
+    padding-top: 1.5rem;
+  }
+
+  .about-pillars h4 {
+    font-size: 1.6rem;
+  }
+
+  .pillars-intro {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pillars-list {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text h3 {
+    font-size: 1.8rem;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+  }
+
+  .about-pillars h4 {
+    font-size: 1.5rem;
+  }
+
+  .pillars-intro {
+    font-size: 0.95rem;
+  }
+
+  .pillars-list {
+    gap: 1rem;
+  }
+
+  .pillars-list li {
+    font-size: 0.95rem;
   }
 }
