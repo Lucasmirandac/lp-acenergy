@@ -520,12 +520,17 @@ ul li {
 
 .service-image {
   width: 100%;
-  height: 200px;
+  height: 0;
+  padding-bottom: 60%; /* Proporção 5:3 para melhor visualização */
   overflow: hidden;
   position: relative;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .service-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
