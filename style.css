@@ -1967,7 +1967,7 @@ html {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  text-align: left;
+  text-align: center;
 }
 
 /* Responsive design for KPI section */
@@ -2169,7 +2169,6 @@ html {
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  text-align: center;
   font-style: italic;
   max-width: 800px;
   margin-left: auto;
