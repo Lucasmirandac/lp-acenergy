@@ -272,36 +272,13 @@ npx serve .
 
 ## 🚀 Próximos Passos
 
-1. **Otimização de Imagens**
-
-   - Implementar WebP
-   - Lazy loading avançado
-   - CDN para assets
-
-2. **Analytics**
-
-   - Google Analytics 4
-   - Google Search Console
-   - Core Web Vitals monitoring
-
-3. **Performance**
-
-   - Service Worker para cache
-   - Critical CSS inlining
-   - JavaScript bundling
-
-4. **Acessibilidade**
-   - Testes com screen readers
-   - Auditoria WCAG completa
-   - Keyboard navigation testing
-
 ## 📞 Contato
 
 **ACENERGY**
 
 - Email: contato@acenergy.com.br
 - WhatsApp: (31) 7598-8021
-- Instagram: @acenergy\_
+- Instagram: @acenergy
 - Sede: Belo Horizonte - MG
 
 ---
