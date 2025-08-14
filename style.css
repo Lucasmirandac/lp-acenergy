@@ -2192,7 +2192,7 @@ html {
 .pillars-list li {
   padding: 0;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .pillars-list strong {
