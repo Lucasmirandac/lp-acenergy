@@ -1832,7 +1832,7 @@ html {
 }
 
 .tech-item p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0 1.5rem 1.5rem;
   line-height: 1.6;
 }
@@ -2169,10 +2169,13 @@ html {
   line-height: 1.6;
   color: var(--text-primary);
   margin-bottom: 2rem;
-  font-style: italic;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+
+  b {
+    font-style: italic;
+  }
 }
 
 .pillars-list {
