@@ -513,6 +513,22 @@ ul li {
   background: var(--primary-color);
 }
 
+.service-header {
+  background: var(--primary-color);
+  width: 100%;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.service-header-logo {
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
 .service-item:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-medium);
@@ -1304,6 +1320,14 @@ footer p {
     max-width: none;
   }
 
+  .service-header {
+    padding: 1.25rem;
+  }
+
+  .service-header-logo {
+    max-width: 150px;
+  }
+
   .service-image,
   .tech-image,
   .audience-image {
@@ -1401,6 +1425,14 @@ footer p {
   .service-item,
   .tech-item {
     padding: 0;
+  }
+
+  .service-header {
+    padding: 1rem;
+  }
+
+  .service-header-logo {
+    max-width: 120px;
   }
 
   .service-image,
