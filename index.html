@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <!-- Start of Zeacon Code -->
+  <script
+    type="text/javascript"
+    async=""
+    id="zeacon-sdk"
+    src="https://zeacon.com/sdk/correlator.js?api-key=68ad841d-f64d-4173-b59e-2c38ddc95d32"
+  ></script>
+  <!-- End of Zeacon Code -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -269,12 +277,101 @@
             </div>
           </div>
 
-          <div class="about-image">
-            <img
-              src="assets/nossa-empresa.jpeg"
-              alt="Céu azul iluminando placas solares com logo da ACENERGY em branco"
-              loading="lazy"
-            />
+          <div class="about-image-carousel">
+            <div
+              id="aboutCarousel"
+              class="carousel slide carousel-fade"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#aboutCarousel"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#aboutCarousel"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#aboutCarousel"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#aboutCarousel"
+                  data-bs-slide-to="3"
+                  aria-label="Slide 4"
+                ></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="assets/nossa-empresa.jpeg"
+                    class="d-block w-100"
+                    alt="Céu azul iluminando placas solares com logo da ACENERGY em branco"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="assets/sistema-modular-1.jpg"
+                    class="d-block w-100"
+                    alt="Sistema modular de energia solar"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="assets/inspecao-visual.jpg"
+                    class="d-block w-100"
+                    alt="Inspeção visual de painéis solares"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="assets/limpeza.jpg"
+                    class="d-block w-100"
+                    alt="Limpeza de painéis solares"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#aboutCarousel"
+                data-bs-slide="prev"
+                aria-label="Imagem anterior"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Anterior</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#aboutCarousel"
+                data-bs-slide="next"
+                aria-label="Próxima imagem"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Próximo</span>
+              </button>
+            </div>
           </div>
 
           <div class="about-pillars">
